@@ -15,6 +15,7 @@ import "appscode/api/kubernetes/v1beta1/cluster.proto";
 import "appscode/api/db/v1beta1/database.proto";
 import "appscode/api/db/v1beta1/snapshot.proto";
 import "appscode/api/namespace/v1beta1/team.proto";
+import "appscode/api/testlongrunning/longrunning.proto";
 
 service Operations {
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
@@ -96,6 +97,7 @@ enum OperationType {
   DATABASE_CHECK = 15;
   SNAPSHOT_CHECK = 16;
   DATABASE_DELETE = 17;
+  LONG_RUNNING_TEST = 18;
 }
 
 // Next Id: 22
@@ -112,6 +114,7 @@ message Operation {
     db.v1beta1.DatabaseCheckRequest database_check_request = 19;
     db.v1beta1.SnapshotCheckRequest snapshot_check_request = 20;
     db.v1beta1.DatabaseDeleteRequest database_delete_request = 21;
+    testlongrunning.LongRunningRequest long_running_request = 22;
   }
   OperationType type = 14;
   string phid = 15;

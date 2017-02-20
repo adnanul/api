@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "testlongrunningLongRunningRequest": {
+      "properties": {
+        "duration": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

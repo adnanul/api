@@ -68,6 +68,15 @@
       },
       "type": "object"
     },
+    "testlongrunningLongRunningRequest": {
+      "properties": {
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1Auth": {
       "properties": {
         "auth_type": {
@@ -508,6 +517,9 @@
         "database_delete_request": {
           "$ref": "#/definitions/v1beta1DatabaseDeleteRequest"
         },
+        "long_running_request": {
+          "$ref": "#/definitions/testlongrunningLongRunningRequest"
+        },
         "metadata": {
           "$ref": "#/definitions/v1beta1Metadata"
         },
@@ -545,7 +557,8 @@
         "NAMESPACE_ADMIN_TASK",
         "DATABASE_CHECK",
         "SNAPSHOT_CHECK",
-        "DATABASE_DELETE"
+        "DATABASE_DELETE",
+        "LONG_RUNNING_TEST"
       ],
       "title": "Next Id: 18",
       "type": "string"

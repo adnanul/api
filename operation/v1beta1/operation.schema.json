@@ -1,5 +1,13 @@
 {
   "definitions": {
+    "testlongrunningLongRunningRequest": {
+      "properties": {
+        "duration": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1BackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {

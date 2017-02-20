@@ -565,6 +565,12 @@
       "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister"
     }
   },
+  "/_appscode/api/longrunning": {
+    "get": {
+      "file": "/testlongrunning/longrunning.proto",
+      "url": "/_appscode/api/longrunning"
+    }
+  },
   "/_appscode/api/mail/v1beta1": {
     "post": {
       "file": "/mailinglist/v1beta1/mailinglist.proto",

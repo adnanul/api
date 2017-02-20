@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package appscode.testlongrunning;
+
+option go_package = "testlongrunning";
+
+option java_multiple_files = true;
+option java_outer_classname = "TestLongRunning";
+option java_package = "com.appscode.api.testlongrunning";
+
+import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
+import "appscode/api/dtypes/types.proto";
+
+service TestLongRunning {
+  rpc Run(LongRunningRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/longrunning/{duration}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message LongRunningRequest {
+  int32 duration = 1;
+}
