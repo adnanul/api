@@ -47,12 +47,10 @@
       "properties": {
         "description": {
           "type": "string",
-          "format": "string",
           "title": "Describe what link offers"
         },
         "url": {
           "type": "string",
-          "format": "string",
           "description": "The URL of The link."
         }
       },
@@ -65,8 +63,7 @@
           "$ref": "#/definitions/dtypesStatus"
         },
         "job_phid": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       },
       "title": "Types for long running operation. usually called as jobs.\nNext Id = 3"
@@ -76,17 +73,14 @@
       "properties": {
         "code": {
           "type": "string",
-          "format": "string",
           "title": "Response status code"
         },
         "status": {
           "type": "string",
-          "format": "string",
           "description": "Response status code string."
         },
         "message": {
           "type": "string",
-          "format": "string",
           "description": "User facing message."
         },
         "help": {
@@ -108,7 +102,6 @@
       "properties": {
         "type_url": {
           "type": "string",
-          "format": "string",
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
         },
         "value": {

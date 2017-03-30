@@ -6,6 +6,9 @@
     },
     "v1beta1AgentCreateRequest": {
       "properties": {
+        "ca_cert": {
+          "type": "string"
+        },
         "external_ip": {
           "type": "string"
         },
@@ -17,6 +20,9 @@
         },
         "jenkins_jnlp_port": {
           "type": "integer"
+        },
+        "jenkins_url": {
+          "type": "string"
         },
         "name": {
           "type": "string"
@@ -35,7 +41,15 @@
     },
     "v1beta1AgentDeleteRequest": {
       "properties": {
-        "name": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentGetRequest": {
+      "properties": {
+        "uid": {
           "type": "string"
         }
       },

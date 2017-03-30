@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,24 +37,14 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
       "title": "Next Id = 5",
-      "type": "object"
-    },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
       "type": "object"
     },
     "protobufAny": {
@@ -65,7 +52,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -76,144 +62,147 @@
       },
       "type": "object"
     },
-    "v1beta1Cluster": {
+    "v1beta1ArtifactVersion": {
       "properties": {
-        "created_at": {
+        "docker": {
+          "$ref": "#/definitions/v1beta1DockerSpec"
+        },
+        "id": {
+          "type": "string"
+        },
+        "java": {
+          "$ref": "#/definitions/v1beta1JavaSpec"
+        },
+        "modified_at": {
           "format": "int64",
           "type": "integer"
         },
-        "endpoint": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_namespace": {
-          "format": "string",
-          "type": "string"
-        },
         "name": {
-          "format": "string",
           "type": "string"
         },
-        "phid": {
-          "format": "string",
+        "npm": {
+          "$ref": "#/definitions/v1beta1NpmSpec"
+        },
+        "php": {
+          "$ref": "#/definitions/v1beta1PhpSpec"
+        },
+        "type": {
           "type": "string"
         },
-        "replica": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "status": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterCreateRequest": {
-      "properties": {
-        "disk_size_gb": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "node": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "storage_class": {
-          "format": "string",
+        "version": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1ClusterDeleteRequest": {
+    "v1beta1DockerSpec": {
       "properties": {
-        "kube_cluster": {
-          "format": "string",
+        "manifest_url": {
           "type": "string"
         },
-        "kube_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterDescribeRequest": {
-      "properties": {
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterDescribeResponse": {
-      "properties": {
-        "glusterfs": {
-          "$ref": "#/definitions/v1beta1Cluster"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterListRequest": {
-      "properties": {
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "status": {
+        "tar_sums": {
           "items": {
-            "format": "string",
             "type": "string"
           },
-          "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETED",
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta1ClusterListResponse": {
+    "v1beta1JavaSpec": {
       "properties": {
-        "clusters": {
+        "artifact_id": {
+          "type": "string"
+        },
+        "artifact_url": {
+          "type": "string"
+        },
+        "group_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NpmSpec": {
+      "properties": {
+        "artifact_id": {
+          "type": "string"
+        },
+        "artifact_url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "keywords": {
           "items": {
-            "$ref": "#/definitions/v1beta1Cluster"
+            "type": "string"
           },
           "type": "array"
         },
+        "shasum": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PhpSpec": {
+      "properties": {
+        "download_url": {
+          "type": "string"
+        },
+        "shasum": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1VersionDescribeRequest": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1VersionDescribeResponse": {
+      "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "version": {
+          "$ref": "#/definitions/v1beta1ArtifactVersion"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1VersionListRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1VersionListResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "versions": {
+          "items": {
+            "$ref": "#/definitions/v1beta1ArtifactVersion"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -221,96 +210,21 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "cluster.proto",
+    "title": "version.proto",
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs": {
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/json": {
       "get": {
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterListResponse"
-            }
-          }
-        },
-        "summary": "Glusterfs cluster list. Needs to work with two modes.\nFirst is to list all the glusterfs cluster through the\nspace with out considering the kubernetes cluster. if the\ncluster_name is provided then list all the glusterfs cluster\nwith respect to the provided kube cluster space.",
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs": {
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
+            "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
-            "in": "path",
-            "name": "kube_namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}": {
-      "delete": {
-        "operationId": "Delete",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -321,35 +235,34 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/v1beta1VersionListResponse"
             }
           }
         },
         "tags": [
-          "Clusters"
+          "Versions"
         ]
-      },
+      }
+    },
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/{id}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
-            "name": "kube_cluster",
+            "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
-            "in": "path",
-            "name": "kube_namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
             "in": "path",
             "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
             "required": true,
             "type": "string"
           }
@@ -358,12 +271,12 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterDescribeResponse"
+              "$ref": "#/definitions/v1beta1VersionDescribeResponse"
             }
           }
         },
         "tags": [
-          "Clusters"
+          "Versions"
         ]
       }
     }

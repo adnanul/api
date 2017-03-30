@@ -52,10 +52,14 @@ EOF
 
 setup_proxy() {
 	echo "Setting up grpc proxy"
+	rm -rf $GOPATH/src/github.com/googleapis/googleapis
+	go get -u github.com/googleapis/googleapis || true
+	rm -rf $GOPATH/src/google.golang.org/genproto
+	go get google.golang.org/genproto || true
 	rm -rf $GOPATH/src/google.golang.org/grpc
 	go get -u google.golang.org/grpc
 	pushd $GOPATH/src/google.golang.org/grpc
-	git checkout v1.0.5
+	git checkout v1.2.0
 	popd
 	rm -rf $GOPATH/src/github.com/golang/protobuf
 	go get -u github.com/golang/protobuf/protoc-gen-go
@@ -65,7 +69,7 @@ setup_proxy() {
 		git clone git@github.com:appscode/grpc-gateway.git
 	fi
 	cd grpc-gateway
-	git reset --soft HEAD~10
+	git reset --soft HEAD~20
 	git reset HEAD --hard
 	git pull origin master
 	go install ./protoc-gen-grpc-gateway/...

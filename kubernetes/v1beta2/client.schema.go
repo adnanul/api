@@ -188,7 +188,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "provider": {
@@ -331,7 +330,6 @@ func init() {
       "properties": {
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -354,8 +352,7 @@ func init() {
     "label_selector": {
       "additionalProperties": {
         "type": "string"
-      },
-      "type": "object"
+      }
     },
     "namespace": {
       "maxLength": 63,

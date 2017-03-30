@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,12 +37,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -57,7 +52,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -68,42 +62,64 @@
       },
       "type": "object"
     },
-    "v1beta1Volume": {
+    "v1beta1Artifact": {
       "properties": {
-        "path": {
-          "format": "string",
+        "modified_at": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1VolumeListRequest": {
+    "v1beta1ArtifactListRequest": {
       "properties": {
-        "glusterfs_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_namespace": {
-          "format": "string",
+        "type": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1VolumeListResponse": {
+    "v1beta1ArtifactListResponse": {
       "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        },
-        "volumes": {
+        "artifacts": {
           "items": {
-            "$ref": "#/definitions/v1beta1Volume"
+            "$ref": "#/definitions/v1beta1Artifact"
           },
           "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ArtifactSearchRequest": {
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ArtifactSearchResponse": {
+      "properties": {
+        "artifacts": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Artifact"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -111,32 +127,17 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "volume.proto",
+    "title": "artifact.proto",
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes": {
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/json": {
       "get": {
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "glusterfs_cluster",
+            "name": "type",
             "required": true,
             "type": "string"
           }
@@ -145,12 +146,42 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1VolumeListResponse"
+              "$ref": "#/definitions/v1beta1ArtifactListResponse"
             }
           }
         },
         "tags": [
-          "Volumes"
+          "Artifacts"
+        ]
+      }
+    },
+    "/_appscode/api/attic/v1beta1/search/json": {
+      "get": {
+        "operationId": "Search",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ArtifactSearchResponse"
+            }
+          }
+        },
+        "tags": [
+          "Artifacts"
         ]
       }
     }

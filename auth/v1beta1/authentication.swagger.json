@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,16 +37,18 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
       "title": "Next Id = 5",
+      "type": "object"
+    },
+    "dtypesVoidRequest": {
+      "description": "Void Requests and response to use with other types.",
       "type": "object"
     },
     "protobufAny": {
@@ -57,13 +56,23 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
           "description": "Must be a valid serialized protocol buffer of the above specified type.",
           "format": "byte",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CSRFTokenResponse": {
+      "properties": {
+        "csrf_token": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -75,15 +84,12 @@
           "type": "boolean"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "secret": {
-          "format": "string",
           "type": "string"
         },
         "username": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -95,7 +101,6 @@
           "$ref": "#/definitions/dtypesStatus"
         },
         "token": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -104,11 +109,9 @@
     "v1beta1LogoutRequest": {
       "properties": {
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "token": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -125,11 +128,9 @@
     "v1beta1TokenRequest": {
       "properties": {
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "token": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -204,7 +205,23 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/login": {
+    "/_appscode/api/auth/v1beta1/csrf-token/json": {
+      "get": {
+        "operationId": "CSRFToken",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1CSRFTokenResponse"
+            }
+          }
+        },
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/_appscode/api/auth/v1beta1/login/json": {
       "post": {
         "operationId": "Login",
         "parameters": [
@@ -231,7 +248,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/logout": {
+    "/_appscode/api/auth/v1beta1/logout/json": {
       "post": {
         "operationId": "Logout",
         "parameters": [
@@ -257,7 +274,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/token": {
+    "/_appscode/api/auth/v1beta1/token/json": {
       "post": {
         "operationId": "Token",
         "parameters": [

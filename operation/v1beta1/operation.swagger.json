@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,12 +37,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -57,7 +52,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -80,74 +74,33 @@
     "v1beta1Auth": {
       "properties": {
         "auth_type": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "secret": {
-          "format": "string",
           "type": "string"
         },
         "username": {
-          "format": "string",
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1BackupScheduleRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "bucket_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "credential_uid": {
-          "format": "string",
-          "type": "string"
-        },
-        "schedule_cron_expr": {
-          "format": "string",
-          "type": "string"
-        },
-        "snapshot_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 13",
       "type": "object"
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         },
         "cloud_credential_data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "default_access_level": {
-          "format": "string",
-          "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - team-admins       // to allow ns admin access\n   - cluster-admins    // to allow admin access\n   - cluster-editors   // to allow editor access\n   - cluster-deployers // to allow deployer access\n   - cluster-viewers   // to allow viewer access\n   - no-access         // to allow no default access\nIf not set this will set \"\"",
+          "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
           "type": "string"
         },
         "do_not_delete": {
@@ -155,27 +108,18 @@
           "type": "boolean"
         },
         "gce_project": {
-          "format": "string",
           "type": "string"
         },
         "hostfacts_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_server_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_starter_version": {
-          "format": "string",
+          "type": "string"
+        },
+        "kubelet_version": {
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_groups": {
@@ -192,15 +136,15 @@
           "type": "object"
         },
         "provider": {
-          "format": "string",
+          "type": "string"
+        },
+        "saltbase_version": {
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         },
         "zone": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -221,7 +165,6 @@
           "type": "boolean"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "release_reserved_ip": {
@@ -231,53 +174,35 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterScaleRequest": {
+    "v1beta1ClusterReconfigureRequest": {
       "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
+        "apply_to_master": {
+          "format": "boolean",
+          "type": "boolean"
         },
-        "node_groups": {
-          "items": {
-            "$ref": "#/definitions/v1beta1InstanceGroup"
-          },
-          "type": "array"
+        "count": {
+          "format": "int64",
+          "type": "integer"
         },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "title": "New node configuration for the cluster",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterUpgradeRequest": {
-      "properties": {
         "hostfacts_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_server_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_starter_version": {
-          "format": "string",
+          "type": "string"
+        },
+        "kubelet_version": {
           "type": "string"
         },
         "name": {
-          "format": "string",
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "sku": {
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -286,97 +211,52 @@
     "v1beta1CreateRequest": {
       "properties": {
         "client_ip": {
-          "format": "string",
           "type": "string"
         },
         "display_name": {
-          "format": "string",
           "type": "string"
         },
         "email": {
-          "format": "string",
           "type": "string"
         },
         "invite_emails": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
         "password": {
-          "format": "string",
+          "type": "string"
+        },
+        "payment_method_nonce": {
           "type": "string"
         },
         "subscription_type": {
-          "format": "string",
           "type": "string"
         },
         "user_name": {
-          "format": "string",
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1DataBucketDeleteRequest": {
-      "properties": {
-        "data_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "prefix": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1DatabaseCheckRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
-    "v1beta1DatabaseDeleteRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "destroy": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
       "type": "object"
     },
     "v1beta1DescribeRequest": {
       "properties": {
         "phid": {
-          "format": "string",
           "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -405,7 +285,6 @@
           "type": "integer"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "use_spot_instances": {
@@ -418,11 +297,9 @@
     "v1beta1Log": {
       "properties": {
         "id": {
-          "format": "string",
           "type": "string"
         },
         "message": {
-          "format": "string",
           "type": "string"
         },
         "timestamp": {
@@ -435,11 +312,9 @@
     "v1beta1LogDescribeRequest": {
       "properties": {
         "log_id": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -460,18 +335,15 @@
       "description": "Metadata holds other on request or operation specific data\nthat could be used inside that operation.\nAn welldefined message instead of a map is used\nso that the data fields can be explicitly defined with\nits own data type. Resolves data convertions.",
       "properties": {
         "author_name": {
-          "format": "string",
           "type": "string"
         },
         "author_phid": {
           "description": "PHID of the user who requested this operation.",
-          "format": "string",
           "type": "string"
         },
         "purchase_phids": {
           "description": "Contains PurchasePHID is this is a purchase request.",
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -482,7 +354,6 @@
     "v1beta1NamespaceAdminTaskRequest": {
       "properties": {
         "namespace": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -493,29 +364,14 @@
         "auth": {
           "$ref": "#/definitions/v1beta1Auth"
         },
-        "backup_schedule_request": {
-          "$ref": "#/definitions/v1beta1BackupScheduleRequest"
-        },
         "cluster_create_request": {
           "$ref": "#/definitions/v1beta1ClusterCreateRequest"
         },
         "cluster_delete_request": {
           "$ref": "#/definitions/v1beta1ClusterDeleteRequest"
         },
-        "cluster_scale_request": {
-          "$ref": "#/definitions/v1beta1ClusterScaleRequest"
-        },
-        "cluster_upgrade_request": {
-          "$ref": "#/definitions/v1beta1ClusterUpgradeRequest"
-        },
-        "data_bucket_delete_request": {
-          "$ref": "#/definitions/v1beta1DataBucketDeleteRequest"
-        },
-        "database_check_request": {
-          "$ref": "#/definitions/v1beta1DatabaseCheckRequest"
-        },
-        "database_delete_request": {
-          "$ref": "#/definitions/v1beta1DatabaseDeleteRequest"
+        "cluster_reconfigure_request": {
+          "$ref": "#/definitions/v1beta1ClusterReconfigureRequest"
         },
         "long_running_request": {
           "$ref": "#/definitions/testlongrunningLongRunningRequest"
@@ -530,11 +386,7 @@
           "$ref": "#/definitions/v1beta1CreateRequest"
         },
         "phid": {
-          "format": "string",
           "type": "string"
-        },
-        "snapshot_check_request": {
-          "$ref": "#/definitions/v1beta1SnapshotCheckRequest"
         },
         "type": {
           "$ref": "#/definitions/v1beta1OperationType"
@@ -548,38 +400,14 @@
       "enum": [
         "UNKNOWN",
         "CLUSTER_CREATE",
-        "CLUSTER_SCALE",
         "CLUSTER_DELETE",
-        "CLUSTER_UPGRADE",
-        "DATA_BUCKET_DELETE",
-        "BACKUP_SCHEDULE",
+        "CLUSTER_RECONFIGURE",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
-        "DATABASE_CHECK",
-        "SNAPSHOT_CHECK",
-        "DATABASE_DELETE",
         "LONG_RUNNING_TEST"
       ],
       "title": "Next Id: 18",
       "type": "string"
-    },
-    "v1beta1SnapshotCheckRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "schedule_backup": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "title": "Next Id: 5",
-      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -588,16 +416,22 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/operation/v1beta1/operations/{phid}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,
             "type": "string"
+          },
+          {
+            "format": "int64",
+            "in": "query",
+            "name": "timestamp",
+            "required": false,
+            "type": "integer"
           }
         ],
         "responses": {
@@ -613,19 +447,17 @@
         ]
       }
     },
-    "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}/json": {
       "get": {
         "operationId": "DescribeLog",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "log_id",
             "required": true,
