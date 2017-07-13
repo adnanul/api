@@ -409,6 +409,16 @@
       "url": "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}/json"
     }
   },
+  "/_appscode/api/phabnotification/v1beta1/json": {
+    "get": {
+      "file": "/phabnotification/v1beta1/phabnotification.proto",
+      "url": "/_appscode/api/phabnotification/v1beta1/json"
+    },
+    "post": {
+      "file": "/phabnotification/v1beta1/phabnotification.proto",
+      "url": "/_appscode/api/phabnotification/v1beta1/json"
+    }
+  },
   "/_appscode/api/ssh/v1beta1/ssh/json": {
     "get": {
       "file": "/ssh/v1beta1/ssh.proto",

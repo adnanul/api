@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package appscode.notification.v1beta1;
+
+option go_package = "v1beta1";
+
+option java_multiple_files = true;
+option java_outer_classname = "PhabNotificationProto";
+option java_package = "com.appscode.api.phabnotification.v1beta1";
+
+import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
+import "appscode/api/dtypes/types.proto";
+
+service PhabNotifications {
+    // Gets Notifications,
+  rpc Get(dtypes.VoidRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/phabnotification/v1beta1/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Update(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/phabnotification/v1beta1/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+
+message GetResponse {
+  repeated PhabNotification result = 1;
+}
+
+message PhabNotification{
+  string story_phid = 1;
+  int64 chronological_key = 2;
+  string story_type = 3;
+  string story_data = 4;
+  string author_phid = 5;
+  int32 has_viewed =6;
+}
