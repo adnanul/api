@@ -35,15 +35,25 @@ service PhabNotifications {
 }
 
 
-message GetResponse {
-  repeated PhabNotification result = 1;
+message GetResponse{
+  repeated PhabResult result = 1;
 }
 
-message PhabNotification{
-  string story_phid = 1;
-  int64 chronological_key = 2;
-  string story_type = 3;
-  string story_data = 4;
-  string author_phid = 5;
-  int32 has_viewed =6;
+message PhabResult {
+  AuthorInfo author = 1;
+  string body_text = 2;
+  TaskInfo task = 3;
+  int64 updated_at = 4;
+  int32 has_viewed = 5;
+
+  message AuthorInfo{
+    string name = 1;
+    string phid = 2;
+    string link = 3;
+  }
+
+  message  TaskInfo{
+    string title  = 1;
+    string link   = 2;
+  }
 }

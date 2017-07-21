@@ -4,6 +4,31 @@
     "application/json"
   ],
   "definitions": {
+    "PhabResultAuthorInfo": {
+      "properties": {
+        "link": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PhabResultTaskInfo": {
+      "properties": {
+        "link": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dtypesVoidRequest": {
       "description": "Void Requests and response to use with other types.",
       "type": "object"
@@ -15,34 +40,31 @@
       "properties": {
         "result": {
           "items": {
-            "$ref": "#/definitions/v1beta1PhabNotification"
+            "$ref": "#/definitions/v1beta1PhabResult"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta1PhabNotification": {
+    "v1beta1PhabResult": {
       "properties": {
-        "author_phid": {
-          "type": "string"
+        "author": {
+          "$ref": "#/definitions/PhabResultAuthorInfo"
         },
-        "chronological_key": {
-          "format": "int64",
-          "type": "integer"
+        "body_text": {
+          "type": "string"
         },
         "has_viewed": {
           "format": "int32",
           "type": "integer"
         },
-        "story_data": {
-          "type": "string"
+        "task": {
+          "$ref": "#/definitions/PhabResultTaskInfo"
         },
-        "story_phid": {
-          "type": "string"
-        },
-        "story_type": {
-          "type": "string"
+        "updated_at": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
