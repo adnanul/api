@@ -20,6 +20,9 @@
     },
     "PhabResultTaskInfo": {
       "properties": {
+        "body_text": {
+          "type": "string"
+        },
         "link": {
           "type": "string"
         },
@@ -52,15 +55,15 @@
         "author": {
           "$ref": "#/definitions/PhabResultAuthorInfo"
         },
-        "body_text": {
-          "type": "string"
-        },
         "has_viewed": {
           "format": "int32",
           "type": "integer"
         },
         "task": {
-          "$ref": "#/definitions/PhabResultTaskInfo"
+          "items": {
+            "$ref": "#/definitions/PhabResultTaskInfo"
+          },
+          "type": "array"
         },
         "updated_at": {
           "format": "int64",
