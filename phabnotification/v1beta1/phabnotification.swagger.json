@@ -23,10 +23,10 @@
         "body_text": {
           "type": "string"
         },
-        "link": {
+        "object_link": {
           "type": "string"
         },
-        "title": {
+        "object_title": {
           "type": "string"
         }
       },
