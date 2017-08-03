@@ -414,7 +414,7 @@
       "file": "/phabnotification/v1beta1/phabnotification.proto",
       "url": "/_appscode/api/phabnotification/v1beta1/json"
     },
-    "post": {
+    "put": {
       "file": "/phabnotification/v1beta1/phabnotification.proto",
       "url": "/_appscode/api/phabnotification/v1beta1/json"
     }

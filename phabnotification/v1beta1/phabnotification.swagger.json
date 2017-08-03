@@ -56,8 +56,8 @@
           "$ref": "#/definitions/PhabResultAuthorInfo"
         },
         "has_viewed": {
-          "format": "int32",
-          "type": "integer"
+          "format": "boolean",
+          "type": "boolean"
         },
         "task": {
           "items": {
@@ -95,7 +95,7 @@
           "PhabNotifications"
         ]
       },
-      "post": {
+      "put": {
         "operationId": "Update",
         "parameters": [
           {
