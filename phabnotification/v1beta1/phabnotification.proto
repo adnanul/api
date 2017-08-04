@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package appscode.notification.v1beta1;
+package appscode.phabnotification.v1beta1;
 
 option go_package = "v1beta1";
 
@@ -13,7 +13,7 @@ import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
 
 service PhabNotifications {
-  // Gets Notifications,
+  // Gets Notifications
   rpc Get(dtypes.VoidRequest) returns (GetResponse) {
     option (google.api.http) = {
       get: "/_appscode/api/phabnotification/v1beta1/json"
@@ -24,6 +24,7 @@ service PhabNotifications {
   }
 
   rpc Update(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
+    //Marks all notification Read
     option (google.api.http) = {
       put: "/_appscode/api/phabnotification/v1beta1/json"
       body: "*"
