@@ -16,6 +16,6 @@ import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 func ExportPhabNotificationsCorsPatterns() []runtime.Pattern {
 	return []runtime.Pattern{
 		pattern_PhabNotifications_Get_0,
-		pattern_PhabNotifications_MarkAllRead_0,
+		pattern_PhabNotifications_MarkAllAsRead_0,
 	}
 }

@@ -13,7 +13,7 @@ import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
 
 service PhabNotifications {
-  // Gets Notifications
+  //Gets Notifications
   rpc Get(dtypes.VoidRequest) returns (GetResponse) {
     option (google.api.http) = {
       get: "/_appscode/api/phabnotification/v1beta1/json"
@@ -23,7 +23,7 @@ service PhabNotifications {
     };
   }
 
-  rpc MarkAllRead(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
+  rpc MarkAllAsRead(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
     //Marks all notification Read
     option (google.api.http) = {
       put: "/_appscode/api/phabnotification/v1beta1/json"
