@@ -23,8 +23,8 @@ service PhabNotifications {
     };
   }
 
+  //Marks all notification Read
   rpc MarkAllAsRead(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
-    //Marks all notification Read
     option (google.api.http) = {
       put: "/_appscode/api/phabnotification/v1beta1/json"
       body: "*"
