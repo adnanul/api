@@ -39,7 +39,7 @@ func request_PhabNotifications_Get_0(ctx context.Context, marshaler runtime.Mars
 
 }
 
-func request_PhabNotifications_Update_0(ctx context.Context, marshaler runtime.Marshaler, client PhabNotificationsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_PhabNotifications_MarkAllRead_0(ctx context.Context, marshaler runtime.Marshaler, client PhabNotificationsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
@@ -47,7 +47,7 @@ func request_PhabNotifications_Update_0(ctx context.Context, marshaler runtime.M
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.Update(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.MarkAllRead(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -111,7 +111,7 @@ func RegisterPhabNotificationsHandler(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("PUT", pattern_PhabNotifications_Update_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PhabNotifications_MarkAllRead_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -129,14 +129,14 @@ func RegisterPhabNotificationsHandler(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PhabNotifications_Update_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PhabNotifications_MarkAllRead_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PhabNotifications_Update_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PhabNotifications_MarkAllRead_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -146,11 +146,11 @@ func RegisterPhabNotificationsHandler(ctx context.Context, mux *runtime.ServeMux
 var (
 	pattern_PhabNotifications_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"_appscode", "api", "phabnotification", "v1beta1", "json"}, ""))
 
-	pattern_PhabNotifications_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"_appscode", "api", "phabnotification", "v1beta1", "json"}, ""))
+	pattern_PhabNotifications_MarkAllRead_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"_appscode", "api", "phabnotification", "v1beta1", "json"}, ""))
 )
 
 var (
 	forward_PhabNotifications_Get_0 = runtime.ForwardResponseMessage
 
-	forward_PhabNotifications_Update_0 = runtime.ForwardResponseMessage
+	forward_PhabNotifications_MarkAllRead_0 = runtime.ForwardResponseMessage
 )

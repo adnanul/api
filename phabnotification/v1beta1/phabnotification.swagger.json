@@ -96,7 +96,7 @@
         ]
       },
       "put": {
-        "operationId": "Update",
+        "operationId": "MarkAllRead",
         "parameters": [
           {
             "in": "body",
