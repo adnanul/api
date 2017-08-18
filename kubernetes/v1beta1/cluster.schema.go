@@ -21,10 +21,10 @@ func init() {
 	clusterInstanceByIPRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "external_ip": {
+    "externalIP": {
       "type": "string"
     },
-    "phid": {
+    "uid": {
       "type": "string"
     }
   },
@@ -38,14 +38,14 @@ func init() {
   "definitions": {
     "v1beta1ClusterSettings": {
       "properties": {
-        "log_index_prefix": {
+        "logIndexPrefix": {
           "type": "string"
         },
-        "log_storage_lifetime": {
+        "logStorageLifetime": {
           "title": "Number of secs logs will be stored in ElasticSearch",
           "type": "integer"
         },
-        "monitoring_storage_lifetime": {
+        "monitoringStorageLifetime": {
           "title": "Number of secs logs will be stored in InfluxDB",
           "type": "integer"
         }
@@ -54,11 +54,11 @@ func init() {
     }
   },
   "properties": {
-    "default_access_level": {
+    "defaultAccessLevel": {
       "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access",
       "type": "string"
     },
-    "do_not_delete": {
+    "doNotDelete": {
       "type": "boolean"
     },
     "name": {
@@ -78,13 +78,13 @@ func init() {
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "delete_dynamic_volumes": {
+    "deleteDynamicVolumes": {
       "type": "boolean"
     },
     "force": {
       "type": "boolean"
     },
-    "keep_lodabalancers": {
+    "keepLodabalancers": {
       "type": "boolean"
     },
     "name": {
@@ -92,7 +92,7 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "release_reserved_ip": {
+    "releaseReservedIP": {
       "type": "boolean"
     }
   },
@@ -112,7 +112,7 @@ func init() {
         "sku": {
           "type": "string"
         },
-        "use_spot_instances": {
+        "useSpotInstances": {
           "type": "boolean"
         }
       },
@@ -120,34 +120,20 @@ func init() {
     }
   },
   "properties": {
-    "cloud_credential": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+    "credentialUID": {
       "type": "string"
     },
-    "cloud_credential_data": {
-      "additionalProperties": {
-        "type": "string"
-      },
-      "type": "object"
-    },
-    "default_access_level": {
+    "defaultAccessLevel": {
       "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
       "type": "string"
     },
-    "do_not_delete": {
+    "doNotDelete": {
       "type": "boolean"
     },
-    "gce_project": {
+    "gceProject": {
       "type": "string"
     },
-    "hostfacts_version": {
-      "type": "string"
-    },
-    "kube_starter_version": {
-      "type": "string"
-    },
-    "kubelet_version": {
+    "kubernetesVersion": {
       "type": "string"
     },
     "name": {
@@ -155,25 +141,13 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "node_groups": {
+    "nodeGroups": {
       "items": {
         "$ref": "#/definitions/v1beta1InstanceGroup"
       },
       "type": "array"
     },
-    "node_set": {
-      "additionalProperties": {
-        "type": "integer"
-      },
-      "type": "object"
-    },
     "provider": {
-      "type": "string"
-    },
-    "saltbase_version": {
-      "type": "string"
-    },
-    "version": {
       "type": "string"
     },
     "zone": {
@@ -215,19 +189,19 @@ func init() {
 	clusterReconfigureRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "apply_to_master": {
+    "applyToMaster": {
       "type": "boolean"
     },
     "count": {
       "type": "integer"
     },
-    "hostfacts_version": {
+    "hostfactsVersion": {
       "type": "string"
     },
-    "kube_starter_version": {
+    "kubeStarterVersion": {
       "type": "string"
     },
-    "kubelet_version": {
+    "kubeletVersion": {
       "type": "string"
     },
     "name": {
@@ -235,7 +209,7 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "saltbase_version": {
+    "saltbaseVersion": {
       "type": "string"
     },
     "sku": {
@@ -253,7 +227,7 @@ func init() {
 	clusterStartupConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "context_version": {
+    "resourceVersion": {
       "type": "integer"
     },
     "role": {

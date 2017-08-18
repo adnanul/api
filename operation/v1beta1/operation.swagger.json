@@ -57,58 +57,33 @@
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "cloud_credential": {
+        "credentialUID": {
           "type": "string"
         },
-        "cloud_credential_data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "default_access_level": {
+        "defaultAccessLevel": {
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
           "type": "string"
         },
-        "do_not_delete": {
+        "doNotDelete": {
           "format": "boolean",
           "type": "boolean"
         },
-        "gce_project": {
+        "gceProject": {
           "type": "string"
         },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
+        "kubernetesVersion": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "node_groups": {
+        "nodeGroups": {
           "items": {
             "$ref": "#/definitions/v1beta1InstanceGroup"
           },
           "type": "array"
         },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "type": "object"
-        },
         "provider": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         },
         "zone": {
@@ -119,7 +94,7 @@
     },
     "v1beta1ClusterDeleteRequest": {
       "properties": {
-        "delete_dynamic_volumes": {
+        "deleteDynamicVolumes": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -127,14 +102,14 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "keep_lodabalancers": {
+        "keepLodabalancers": {
           "format": "boolean",
           "type": "boolean"
         },
         "name": {
           "type": "string"
         },
-        "release_reserved_ip": {
+        "releaseReservedIP": {
           "format": "boolean",
           "type": "boolean"
         }
@@ -143,7 +118,7 @@
     },
     "v1beta1ClusterReconfigureRequest": {
       "properties": {
-        "apply_to_master": {
+        "applyToMaster": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -151,19 +126,19 @@
           "format": "int64",
           "type": "integer"
         },
-        "hostfacts_version": {
+        "hostfactsVersion": {
           "type": "string"
         },
-        "kube_starter_version": {
+        "kubeStarterVersion": {
           "type": "string"
         },
-        "kubelet_version": {
+        "kubeletVersion": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "saltbase_version": {
+        "saltbaseVersion": {
           "type": "string"
         },
         "sku": {
@@ -249,7 +224,7 @@
         "sku": {
           "type": "string"
         },
-        "use_spot_instances": {
+        "useSpotInstances": {
           "format": "boolean",
           "type": "boolean"
         }

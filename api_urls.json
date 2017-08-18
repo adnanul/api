@@ -214,13 +214,13 @@
   "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/instance-by-ip/{externalIP}"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/instance-by-ip/{externalIP}/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/json": {
@@ -261,16 +261,16 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/versions/*": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/versions/{resourceVersion}"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*/json": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/versions/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/versions/{resourceVersion}/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/json": {

@@ -6,27 +6,27 @@
   "definitions": {
     "ClusterDescribeResponseClusterSpec": {
       "properties": {
-        "container_count": {
+        "containerCount": {
           "format": "int32",
           "type": "integer"
         },
-        "pod_count": {
+        "podCount": {
           "format": "int32",
           "type": "integer"
         },
-        "rc_count": {
+        "rcCount": {
           "format": "int32",
           "type": "integer"
         },
-        "service_count": {
+        "serviceCount": {
           "format": "int32",
           "type": "integer"
         },
-        "total_cpu": {
+        "totalCpu": {
           "format": "int64",
           "type": "integer"
         },
-        "total_memory": {
+        "totalMemory": {
           "format": "int64",
           "type": "integer"
         }
@@ -47,45 +47,45 @@
     },
     "v1beta1Cluster": {
       "properties": {
-        "api_server_url": {
+        "apiServerUrl": {
           "type": "string"
         },
-        "ca_cert": {
+        "caCert": {
           "type": "string"
         },
-        "created_at": {
+        "createdAt": {
           "format": "int64",
           "type": "integer"
         },
-        "created_by": {
+        "createdBy": {
           "type": "string"
         },
-        "default_access_level": {
+        "defaultAccessLevel": {
           "type": "string"
         },
-        "do_not_delete": {
+        "doNotDelete": {
           "format": "boolean",
           "type": "boolean"
         },
-        "gce_project": {
+        "gceProject": {
           "type": "string"
         },
-        "instance_root_password": {
+        "instanceRootPassword": {
           "type": "string"
         },
-        "kube_bearer_token": {
+        "kubeBearerToken": {
           "type": "string"
         },
-        "kube_password": {
+        "kubePassword": {
           "type": "string"
         },
-        "kube_starter_version": {
+        "kubeStarterVersion": {
           "type": "string"
         },
-        "kube_user": {
+        "kubeUser": {
           "type": "string"
         },
-        "kubelet_version": {
+        "kubeletVersion": {
           "type": "string"
         },
         "links": {
@@ -97,14 +97,11 @@
         "name": {
           "type": "string"
         },
-        "node_count": {
+        "nodeCount": {
           "format": "int32",
           "type": "integer"
         },
         "os": {
-          "type": "string"
-        },
-        "phid": {
           "type": "string"
         },
         "provider": {
@@ -113,7 +110,7 @@
         "region": {
           "type": "string"
         },
-        "saltbase_version": {
+        "saltbaseVersion": {
           "type": "string"
         },
         "settings": {
@@ -125,7 +122,10 @@
         "status": {
           "type": "string"
         },
-        "status_cause": {
+        "statusCause": {
+          "type": "string"
+        },
+        "uid": {
           "type": "string"
         },
         "version": {
@@ -147,31 +147,31 @@
     },
     "v1beta1ClusterClientConfigResponse": {
       "properties": {
-        "api_server_url": {
+        "apiServerUrl": {
           "type": "string"
         },
-        "ca_cert": {
+        "caCert": {
           "type": "string"
         },
-        "cluster_domain": {
+        "clusterDomain": {
           "type": "string"
         },
-        "cluster_user_name": {
+        "clusterUserName": {
           "type": "string"
         },
-        "context_name": {
+        "contextName": {
           "type": "string"
         },
         "password": {
           "type": "string"
         },
-        "user_cert": {
+        "userCert": {
           "type": "string"
         },
-        "user_key": {
+        "userKey": {
           "type": "string"
         },
-        "user_token": {
+        "userToken": {
           "type": "string"
         }
       },
@@ -179,58 +179,33 @@
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "cloud_credential": {
+        "credentialUID": {
           "type": "string"
         },
-        "cloud_credential_data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "default_access_level": {
+        "defaultAccessLevel": {
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
           "type": "string"
         },
-        "do_not_delete": {
+        "doNotDelete": {
           "format": "boolean",
           "type": "boolean"
         },
-        "gce_project": {
+        "gceProject": {
           "type": "string"
         },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
+        "kubernetesVersion": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "node_groups": {
+        "nodeGroups": {
           "items": {
             "$ref": "#/definitions/v1beta1InstanceGroup"
           },
           "type": "array"
         },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "type": "object"
-        },
         "provider": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         },
         "zone": {
@@ -241,7 +216,7 @@
     },
     "v1beta1ClusterDeleteRequest": {
       "properties": {
-        "delete_dynamic_volumes": {
+        "deleteDynamicVolumes": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -249,14 +224,14 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "keep_lodabalancers": {
+        "keepLodabalancers": {
           "format": "boolean",
           "type": "boolean"
         },
         "name": {
           "type": "string"
         },
-        "release_reserved_ip": {
+        "releaseReservedIP": {
           "format": "boolean",
           "type": "boolean"
         }
@@ -276,7 +251,7 @@
         "cluster": {
           "$ref": "#/definitions/v1beta1Cluster"
         },
-        "operation_phid": {
+        "operationPhid": {
           "type": "string"
         },
         "spec": {
@@ -287,22 +262,22 @@
     },
     "v1beta1ClusterInstance": {
       "properties": {
-        "external_id": {
+        "externalIP": {
           "type": "string"
         },
-        "external_ip": {
+        "externalId": {
           "type": "string"
         },
-        "internal_ip": {
+        "internalIP": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "phid": {
+        "sku": {
           "type": "string"
         },
-        "sku": {
+        "uid": {
           "type": "string"
         }
       },
@@ -310,10 +285,10 @@
     },
     "v1beta1ClusterInstanceByIPRequest": {
       "properties": {
-        "external_ip": {
+        "externalIP": {
           "type": "string"
         },
-        "phid": {
+        "uid": {
           "type": "string"
         }
       },
@@ -351,7 +326,7 @@
     },
     "v1beta1ClusterReconfigureRequest": {
       "properties": {
-        "apply_to_master": {
+        "applyToMaster": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -359,19 +334,19 @@
           "format": "int64",
           "type": "integer"
         },
-        "hostfacts_version": {
+        "hostfactsVersion": {
           "type": "string"
         },
-        "kube_starter_version": {
+        "kubeStarterVersion": {
           "type": "string"
         },
-        "kubelet_version": {
+        "kubeletVersion": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "saltbase_version": {
+        "saltbaseVersion": {
           "type": "string"
         },
         "sku": {
@@ -385,15 +360,15 @@
     },
     "v1beta1ClusterSettings": {
       "properties": {
-        "log_index_prefix": {
+        "logIndexPrefix": {
           "type": "string"
         },
-        "log_storage_lifetime": {
+        "logStorageLifetime": {
           "format": "int64",
           "title": "Number of secs logs will be stored in ElasticSearch",
           "type": "integer"
         },
-        "monitoring_storage_lifetime": {
+        "monitoringStorageLifetime": {
           "format": "int64",
           "title": "Number of secs logs will be stored in InfluxDB",
           "type": "integer"
@@ -403,7 +378,7 @@
     },
     "v1beta1ClusterStartupConfigRequest": {
       "properties": {
-        "context_version": {
+        "resourceVersion": {
           "format": "int64",
           "type": "integer"
         },
@@ -429,11 +404,11 @@
     },
     "v1beta1ClusterUpdateRequest": {
       "properties": {
-        "default_access_level": {
+        "defaultAccessLevel": {
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access",
           "type": "string"
         },
-        "do_not_delete": {
+        "doNotDelete": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -455,7 +430,7 @@
         "sku": {
           "type": "string"
         },
-        "use_spot_instances": {
+        "useSpotInstances": {
           "format": "boolean",
           "type": "boolean"
         }
@@ -630,19 +605,19 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/instance-by-ip/{externalIP}": {
       "get": {
         "operationId": "InstanceByIP",
         "parameters": [
           {
             "in": "path",
-            "name": "phid",
+            "name": "uid",
             "required": true,
             "type": "string"
           },
           {
             "in": "path",
-            "name": "external_ip",
+            "name": "externalIP",
             "required": true,
             "type": "string"
           }
@@ -660,19 +635,19 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/instance-by-ip/{externalIP}/json": {
       "get": {
         "operationId": "InstanceByIP",
         "parameters": [
           {
             "in": "path",
-            "name": "phid",
+            "name": "uid",
             "required": true,
             "type": "string"
           },
           {
             "in": "path",
-            "name": "external_ip",
+            "name": "externalIP",
             "required": true,
             "type": "string"
           }
@@ -714,7 +689,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/versions/{resourceVersion}": {
       "get": {
         "operationId": "StartupConfig",
         "parameters": [
@@ -733,7 +708,7 @@
           {
             "format": "int64",
             "in": "path",
-            "name": "context_version",
+            "name": "resourceVersion",
             "required": true,
             "type": "integer"
           }
@@ -751,7 +726,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/versions/{resourceVersion}/json": {
       "get": {
         "operationId": "StartupConfig",
         "parameters": [
@@ -770,7 +745,7 @@
           {
             "format": "int64",
             "in": "path",
-            "name": "context_version",
+            "name": "resourceVersion",
             "required": true,
             "type": "integer"
           }
