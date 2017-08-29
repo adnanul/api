@@ -129,6 +129,15 @@ service Clients {
       enable: true
     };
   }
+
+  rpc ReverseIndex(ReverseIndexResourceRequest) returns (ReverseIndexResourceResponse){
+    option (google.api.http) = {
+      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/reverseindex/{type}/{name}/{targetType}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
 }
 
 service Disks {
@@ -183,6 +192,29 @@ message ListResourceRequest {
   // example label_selector=environment=production,tier=frontend
   string selector = 6;
 }
+
+message ReverseIndexResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string name = 3;
+  string namespace = 4;
+  string api_version = 5;
+  bool include_metrics = 6;
+  string targetType = 7;
+  // map type is not supported by grpc-gateway as query params.
+  // https://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57
+  // https://github.com/grpc-ecosystem/grpc-gateway/issues/316
+  // map<string, string> label_selector = 6;
+  // example label_selector=environment=production,tier=frontend
+  string selector = 8;
+}
+
+message ReverseIndexResourceResponse {
+  KubeResourceList resources = 1;
+  repeated string available_versions = 2;
+  string preferred_version = 3;
+}
+
 
 message ListResourceResponse {
   KubeResourceList resources = 1;

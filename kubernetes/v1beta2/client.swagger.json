@@ -3246,6 +3246,54 @@
       },
       "type": "object"
     },
+    "v1beta2ReverseIndexResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "include_metrics": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "selector": {
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
+          "type": "string"
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReverseIndexResourceResponse": {
+      "properties": {
+        "available_versions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "preferred_version": {
+          "type": "string"
+        },
+        "resources": {
+          "$ref": "#/definitions/v1beta2KubeResourceList"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Role": {
       "properties": {
         "meta": {
@@ -4214,6 +4262,74 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/reverseindex/{type}/{name}/{targetType}/json": {
+      "get": {
+        "operationId": "ReverseIndex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "targetType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "format": "boolean",
+            "in": "query",
+            "name": "include_metrics",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
+            "in": "query",
+            "name": "selector",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ReverseIndexResourceResponse"
             }
           }
         },
