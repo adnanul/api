@@ -33,6 +33,29 @@
       },
       "type": "object"
     },
+    "ClusterMetadataResponseKubedConfig": {
+      "properties": {
+        "analytics_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "operator_namespace": {
+          "type": "string"
+        },
+        "reverse_index_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "search_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "version": {
+          "$ref": "#/definitions/versionVersion"
+        }
+      },
+      "type": "object"
+    },
     "dtypesLongRunningResponse": {
       "properties": {
         "operation_phid": {
@@ -104,9 +127,6 @@
         "os": {
           "type": "string"
         },
-        "phid": {
-          "type": "string"
-        },
         "provider": {
           "type": "string"
         },
@@ -128,10 +148,21 @@
         "status_cause": {
           "type": "string"
         },
+        "uid": {
+          "type": "string"
+        },
         "version": {
           "type": "string"
         },
         "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterApplyRequest": {
+      "properties": {
+        "name": {
           "type": "string"
         }
       },
@@ -179,14 +210,8 @@
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "cloud_credential": {
+        "credential_uid": {
           "type": "string"
-        },
-        "cloud_credential_data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
         },
         "default_access_level": {
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
@@ -199,13 +224,7 @@
         "gce_project": {
           "type": "string"
         },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
+        "kubernetes_version": {
           "type": "string"
         },
         "name": {
@@ -217,20 +236,7 @@
           },
           "type": "array"
         },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "type": "object"
-        },
         "provider": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         },
         "zone": {
@@ -276,53 +282,11 @@
         "cluster": {
           "$ref": "#/definitions/v1beta1Cluster"
         },
-        "operation_phid": {
+        "operation_uid": {
           "type": "string"
         },
         "spec": {
           "$ref": "#/definitions/ClusterDescribeResponseClusterSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterInstance": {
-      "properties": {
-        "external_id": {
-          "type": "string"
-        },
-        "external_ip": {
-          "type": "string"
-        },
-        "internal_ip": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterInstanceByIPRequest": {
-      "properties": {
-        "external_ip": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterInstanceByIPResponse": {
-      "properties": {
-        "instance": {
-          "$ref": "#/definitions/v1beta1ClusterInstance"
         }
       },
       "type": "object"
@@ -349,6 +313,28 @@
       },
       "type": "object"
     },
+    "v1beta1ClusterMetadataRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterMetadataResponse": {
+      "properties": {
+        "custom_resources": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "kubed_config": {
+          "$ref": "#/definitions/ClusterMetadataResponseKubedConfig"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {
@@ -359,25 +345,13 @@
           "format": "int64",
           "type": "integer"
         },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
+        "kubernetes_version": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "saltbase_version": {
-          "type": "string"
-        },
         "sku": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         }
       },
@@ -397,32 +371,6 @@
           "format": "int64",
           "title": "Number of secs logs will be stored in InfluxDB",
           "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterStartupConfigRequest": {
-      "properties": {
-        "context_version": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "role": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterStartupConfigResponse": {
-      "properties": {
-        "configuration": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -458,6 +406,50 @@
         "use_spot_instances": {
           "format": "boolean",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "versionVersion": {
+      "properties": {
+        "arch": {
+          "type": "string"
+        },
+        "build_host": {
+          "type": "string"
+        },
+        "build_host_arch": {
+          "type": "string"
+        },
+        "build_host_os": {
+          "type": "string"
+        },
+        "build_timestamp": {
+          "type": "string"
+        },
+        "commit_hash": {
+          "type": "string"
+        },
+        "commit_timestamp": {
+          "type": "string"
+        },
+        "git_branch": {
+          "type": "string"
+        },
+        "git_tag": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "version_strategy": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -504,6 +496,38 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1beta1ClusterCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/apply/json": {
+      "put": {
+        "operationId": "Apply",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1ClusterApplyRequest"
             }
           }
         ],
@@ -630,66 +654,6 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}": {
-      "get": {
-        "operationId": "InstanceByIP",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "phid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "external_ip",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterInstanceByIPResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json": {
-      "get": {
-        "operationId": "InstanceByIP",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "phid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "external_ip",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterInstanceByIPResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
     "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/json": {
       "get": {
         "operationId": "Describe",
@@ -714,72 +678,22 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json": {
       "get": {
-        "operationId": "StartupConfig",
+        "operationId": "Metadata",
         "parameters": [
           {
             "in": "path",
             "name": "uid",
             "required": true,
             "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "int64",
-            "in": "path",
-            "name": "context_version",
-            "required": true,
-            "type": "integer"
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterStartupConfigResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json": {
-      "get": {
-        "operationId": "StartupConfig",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "int64",
-            "in": "path",
-            "name": "context_version",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterStartupConfigResponse"
+              "$ref": "#/definitions/v1beta1ClusterMetadataResponse"
             }
           }
         },
