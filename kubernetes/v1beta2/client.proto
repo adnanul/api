@@ -132,7 +132,7 @@ service Clients {
 
   rpc ReverseIndex(ReverseIndexResourceRequest) returns (ListResourceResponse){
     option (google.api.http) = {
-      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/reverseindex/{type}/{name}/{targetType}/json"
+      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
     };
     option (appscode.api.cors) = {
       enable: true

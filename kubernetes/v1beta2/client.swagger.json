@@ -4746,60 +4746,6 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/reverseindex/{type}/{name}/{targetType}/json": {
-      "get": {
-        "operationId": "ReverseIndex",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "targetType",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "namespace",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "api_version",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta2ListResourceResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clients"
-        ]
-      }
-    },
     "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json": {
       "get": {
         "operationId": "List",
@@ -5021,6 +4967,60 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
+      "get": {
+        "operationId": "ReverseIndex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "targetType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ListResourceResponse"
             }
           }
         },
