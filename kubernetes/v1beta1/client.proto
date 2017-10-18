@@ -1320,9 +1320,9 @@ message Certificate {
     // "rfc2136":
     // "route53":
     // "vultr":
-    string provider = 2;
-    string email = 3;
-    ObjectReference HTTP_provider_ingress_reference = 4;
+    string provider = 2 [deprecated=true];
+    string email = 3 [deprecated=true];
+    ObjectReference HTTP_provider_ingress_reference = 4 [deprecated=true];
 
     // ProviderCredentialSecret Must Contain Secrets for that specific Providers.
     // All the Key names for DNS providers needs to maintain the following formate:
@@ -1385,20 +1385,20 @@ message Certificate {
     // 
     // vultr
     // VULTR_API_KEY: The API key to use
-    string provider_credential_secret_name = 5;
+    string provider_credential_secret_name = 5 [deprecated=true];
     string ACME_user_secret_name = 6;
 
     // Provides Custom acme server url to issue certificates. If empty it
     // uses let's encrypt servers.
-    string ACME_serverURL = 7;
+    string ACME_serverURL = 7 [deprecated=true];
   }
 
   message Status {
-    bool certificate_obtained = 1;
-    string message = 2;
+    bool certificate_obtained = 1 [deprecated=true];
+    string message = 2 [deprecated=true];
     int64 creation_time = 3;
-    string ACME_user_secret_name = 4;
-    ACMECertificateDetails details = 5;
+    string ACME_user_secret_name = 4 [deprecated=true];
+    ACMECertificateDetails details = 5 [deprecated=true];
 
     message ACMECertificateDetails {
       string domain = 1;
@@ -1688,8 +1688,8 @@ message Ingress {
     string service_name = 2;
     int32 service_port = 3;
     repeated string backend_rule = 4;
-    repeated string rewrite_rule = 5;
-    repeated string header_rule = 6;
+    repeated string rewrite_rule = 5 [deprecated=true];
+    repeated string header_rule = 6 [deprecated=true];
   }
 
   message Status {
@@ -1703,7 +1703,7 @@ message Ingress {
 
   message IngressTLS {
     repeated string hosts = 1;
-    string secret_name = 2;
+    string secret_name = 2 [deprecated=true];
   }
 
   message IngressRule {
